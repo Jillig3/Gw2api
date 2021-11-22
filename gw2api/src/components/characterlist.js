@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { BASE_URL, API_KEY } from "../constants";
 import axios from "axios";
-// import User from './user';
+import Tp from "./tp";
+import Linechart from "./chart";
 
 const Character = () => {
     const [ info, setInfo ] = useState();
 
     useEffect(() => {
         axios
-            .get(`${BASE_URL}?access_token=${API_KEY}`)
+            .get(`${BASE_URL}/account?access_token=${API_KEY}`)
             .then(res => {
                 setInfo(res.data);
             })
@@ -23,6 +24,8 @@ const Character = () => {
                 <h3>{info.age}</h3>
                 <h3>{info.created}</h3>
                 <h3>{info.fractal_level}</h3>
+                <Tp/>
+                <Linechart/>
             </div>
         )
     } else {
