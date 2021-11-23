@@ -8,17 +8,25 @@ const Tp = () => {
     useEffect(() => {
         axios
             .get(
-                `${BASE_URL}/commerce/tansactions/history/sells?access_token=${API_KEY}`
+                `https://cors-anywhere.herokuapp.com/${BASE_URL}/commerce/transactions/history/sells`, 
+                {
+                    crossdomain: true,
+                    headers: {
+                        authorization: `Bearer ${API_KEY}`
+                    }
+                }
             )
-            .then(res => res.json)
             .then(res => {
                 setInfo(res.data)
+                console.log(res.data)
             })
             .catch(err => console.log(err));
     }, []);
 
     if(info){
-        const sells = info.map(sell => <p>{sell.text}</p>)
+        const sells = info.map((sell) => 
+        <li>Sell Price: {sell.price}, Creation Date: {sell.created}</li>);
+
         return (
             <div className='content-container'>   
              {sells}
