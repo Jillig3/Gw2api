@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BASE_URL, API_KEY } from "../constants";
 import axios from "axios";
-
 const Tp = () => {
     const [ info, setInfo ] = useState();
 
@@ -28,7 +27,7 @@ const Tp = () => {
         <li>Sell Price: {sell.price}, Creation Date: {sell.created}</li>);
 
         return (
-            <div className='content-container'>   
+            <div className='content-container'>
              {sells}
             </div>
         )

@@ -1,7 +1,7 @@
 import React from 'react';
 import Character from './components/characterlist'
 
-function App(props) {
+function App() {
   return (
     <div className="App">
       <h1>Stupiddog's Account</h1>
