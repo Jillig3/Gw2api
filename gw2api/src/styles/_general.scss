@@ -1,0 +1,42 @@
+body {
+	background: $background;
+	font-family: $font-header;
+	width: 100%;
+}
+
+.content-container {
+	margin: 0 auto;
+	max-width: $sitewidth;
+	padding: 3rem 1rem;
+}
+
+.content-header {
+
+}
+
+.header-title {
+	margin-bottom: 2rem;
+	text-align: center;
+}
+
+.header-meta {
+	background: $background-light;
+	border-radius: 1rem;
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-columns: 1fr 1fr;
+	margin-bottom: 1rem;
+	padding: 2rem;
+
+	h3 {
+		color: $gray;
+		font-size: 1.125rem;
+		font-weight: normal;
+		margin: 0;
+
+		span {
+			color: #fff;
+			font-weight: bold;
+		}
+	}
+}

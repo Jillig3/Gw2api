@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { BASE_URL, API_KEY } from "../constants";
 import axios from "axios";
 import Tp from "./tp";
-import Linechart from "./chart";
 
 const Character = () => {
     const [ info, setInfo ] = useState();
@@ -15,17 +14,27 @@ const Character = () => {
             })
             .catch(err => console.log(err));
     }, []);
+
     if(info) {
+        let creation = new Date(info.created).toLocaleDateString()
+
         return (
-            <div className='content-container'>   
-                <h1></h1>
-                <h3>Account Id: {info.id}</h3>
-                <h3>Account Name: {info.name}</h3>
-                <h3>Account Age: {info.age}</h3>
-                <h3>Account Creation: {info.created}</h3>
-                <h3>Fractal Level: {info.fractal_level}</h3>
+            <div className='content-container'>
+                <header className='content-header'>
+                    <div className='header-title'>
+                        <h1>Stupiddog's Account</h1>
+                    </div>
+                    <div className="header-info">
+                        <div className='header-meta'>
+                            <h3><span>Account Id:</span> {info.id}</h3>
+                            <h3><span>Account Name:</span> {info.name}</h3>
+                            <h3><span>Account Age:</span> {info.age}</h3>
+                            <h3><span>Account Creation:</span> {creation}</h3>
+                            <h3><span>Fractal Level:</span> {info.fractal_level}</h3>
+                        </div>
+                    </div>
+                </header>
                 <Tp/>
-                <Linechart/>
             </div>
         )
     } else {

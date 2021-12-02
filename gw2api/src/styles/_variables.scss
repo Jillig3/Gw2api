@@ -1,0 +1,102 @@
+$sitewidth: 1200px;
+$contentwidth: 1080px;
+$border-radius: 8px;
+
+$font-header: 'Raleway', sans-serif;
+$font-body: 'Open Sans', sans-serif;
+
+$teal: #89E9F4;
+$purple: #52489D;
+$orange: #FD9934;
+
+$gray: #A7A7B0;
+
+$background: #1B1C31;
+$background-light: #24243C;
+$text: $gray;
+
+$breakpoints: (
+	1200px,
+	1025px,
+	768px,
+	640px,
+	480px
+);
+
+@mixin breakpoint($breakpoint, $orientation: below, $scope: 0) {
+
+	@if (unitless($breakpoint)) {
+
+		@if $scope != 0 {
+
+			@if $orientation == below {
+				@media (max-width: nth($breakpoints, $breakpoint)) and(min-width: (nth($breakpoints, $breakpoint+$scope))) { @content; }
+			} @else {
+				&:before {
+					background-color: #f00;
+					color: #fff;
+					padding: vr(.25);
+					content: "You can only scope below a breakpoint, not above.";
+				}
+			}
+
+		} @else {
+
+			@if $breakpoint == 0 {
+				@media (min-width: (nth($breakpoints, 1))) { @content; }
+			} @else {
+				@if $orientation == above {
+					@media (min-width: (nth($breakpoints, $breakpoint))) { @content; }
+				} @else {
+					@media (max-width: nth($breakpoints, $breakpoint)) { @content; }
+				}
+			}
+		}
+
+	} @else {
+		@if $orientation == above {
+			@media (min-width: ($breakpoint)) { @content; }
+		} @else {
+			@media (max-width: ($breakpoint)) { @content; }
+		}
+	}
+}
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+	scrollbar-width: thin;
+	scrollbar-color: $foreground-color $background-color;
+
+	// For Google Chrome
+	&::-webkit-scrollbar {
+		width:  $size;
+		height: $size;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $background-color;
+	}
+
+	// For Internet Explorer
+	& {
+		scrollbar-face-color: $foreground-color;
+		scrollbar-track-color: $background-color;
+	}
+}
+
+@mixin clearfix() {
+	*zoom: 1;
+
+	&::before,
+	&::after {
+		content: " ";
+		display: table;
+	}
+
+	&::after {
+		clear: both;
+	}
+}
