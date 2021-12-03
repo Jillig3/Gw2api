@@ -2,10 +2,10 @@ import React from 'react';
 import Character from './components/characterlist'
 import "./styles/App.scss";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <Character/>
+      <Character />
     </div>
   );
 }

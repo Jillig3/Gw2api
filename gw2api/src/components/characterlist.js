@@ -4,7 +4,7 @@ import axios from "axios";
 import Tp from "./tp";
 
 const Character = () => {
-    const [ info, setInfo ] = useState();
+    const [info, setInfo] = useState();
 
     useEffect(() => {
         axios
@@ -15,8 +15,8 @@ const Character = () => {
             .catch(err => console.log(err));
     }, []);
 
-    if(info) {
-        let creation = new Date(info.created).toLocaleDateString()
+    if (info) {
+        const creation = new Date(info.created).toLocaleDateString()
 
         return (
             <div className='content-container'>
@@ -34,15 +34,14 @@ const Character = () => {
                         </div>
                     </div>
                 </header>
-                <Tp/>
+                <Tp />
             </div>
         )
     } else {
-        return(
-        <h1>Loading...</h1>
+        return (
+            <h1>Loading...</h1>
         )
     }
-
 };
 
 export default Character;
