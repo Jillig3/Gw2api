@@ -9,7 +9,7 @@ const Tp = () => {
     useEffect(() => {
         axios
             .get(
-                `https://cors-anywhere.herokuapp.com/${BASE_URL}/commerce/transactions/history/sells`,
+                `${BASE_URL}/commerce/transactions/history/sells`,
                 {
                     crossdomain: true,
                     headers: {
